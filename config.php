@@ -38,10 +38,54 @@ $THEME->name = 'unitecstandard_base';
 //
 $THEME->doctype = 'html5';
 $THEME->parents = array('bootstrapbase');
-$THEME->sheets = array('custom');
+$THEME->sheets = array('custom', 'font-awesome.min', 'settings', 'hsdvtemplatecompatability');
 $THEME->yuicssmodules = array();
 $THEME->enable_dock = true;
 $THEME->editor_sheets = array();
 
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 $THEME->csspostprocess = 'theme_unitecstandard_base_process_css';
+$THEME->javascripts = array('customjssettings');
+$THEME->javascripts_footer = array('unitecstandard_base');
+
+$THEME->layouts = array(
+    // Standard layout with blocks, this is recommended for most pages with general information.
+    'standard' => array(
+        'file' => 'columns3.php',
+        'regions' => array('side-pre', 'side-post', 'top-fullwidth' ,'upper-fullwidth', 'lower-fullwidth', 'bottom-fullwidth'),
+        'defaultregion' => 'side-pre',
+    ),
+    // Main course page.
+    'course' => array(
+        'file' => 'columns3.php',
+        'regions' => array('side-pre', 'side-post', 'top-fullwidth' ,'upper-fullwidth', 'lower-fullwidth', 'bottom-fullwidth'),
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true),
+    ),
+    'coursecategory' => array(
+        'file' => 'columns3.php',
+        'regions' => array('side-pre', 'side-post', 'top-fullwidth' ,'upper-fullwidth', 'lower-fullwidth', 'bottom-fullwidth'),
+        'defaultregion' => 'side-pre',
+    ),
+    // Part of course, typical for modules - default page layout if $cm specified in require_login().
+    'incourse' => array(
+        'file' => 'columns3.php',
+        'regions' => array('side-pre', 'side-post', 'top-fullwidth' ,'upper-fullwidth', 'lower-fullwidth', 'bottom-fullwidth'),
+        'defaultregion' => 'side-pre',
+    ),
+    // The site home page.
+    'frontpage' => array(
+        'file' => 'columns3.php',
+        'regions' => array('side-pre', 'side-post', 'top-fullwidth' ,'upper-fullwidth', 'lower-fullwidth', 'bottom-fullwidth'),
+        'defaultregion' => 'side-pre',
+        'options' => array('nonavbar' => true),
+    ),
+    // My dashboard page.
+    'mydashboard' => array(
+        'file' => 'columns3.php',
+        'regions' => array('side-pre', 'side-post', 'top-fullwidth' ,'upper-fullwidth', 'lower-fullwidth', 'bottom-fullwidth'),
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true),
+    ),
+
+);
