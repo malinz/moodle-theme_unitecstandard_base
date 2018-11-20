@@ -17,13 +17,13 @@
 /**
  * The maintenance layout.
  *
- * @package   theme_unitecstandard
+ * @package   theme_unitecstandard_base
  * @copyright 2013 Moodle, moodle.org
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 // Get the HTML for the settings bits.
-$html = theme_unitecstandard_get_html_for_settings($OUTPUT, $PAGE);
+$html = theme_unitecstandard_base_get_html_for_settings($OUTPUT, $PAGE);
 
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
