@@ -1,0 +1,943 @@
+/*###################################################
+########      FONTAWESOME FONT SETTINGS    ###########
+###################################################*/
+@font-face { 
+font-family: 'FontAwesome'; 
+src: url([[font:theme|fontawesome-webfont.eot]]); 
+src: url([[font:theme|fontawesome-webfont.eot]]) format('embedded-opentype'), 
+     url([[font:theme|fontawesome-webfont.woff]]) format('woff'),
+     url([[font:theme|fontawesome-webfont.woff2]]) format('woff'),  
+     url([[font:theme|fontawesome-webfont.ttf]]) format('truetype'), 
+     url([[font:theme|fontawesome-webfont.svg]]) format('svg'); font-weight: normal; font-style: normal; 
+} 
+
+/*##################################################
+#########      TOP NAVBAR CSS SETTINGS     ##########
+##################################################*/
+
+
+/*navbar color settings*/
+.navbar .navbar-inner {
+    background-color: #0A7B7B;
+	background-image: none;
+}
+
+/*navbar color settings*/
+.navbar .navbar-inner a.dropdown-toggle:hover {
+    background-color: #006666;
+	background-image: none;
+}
+
+/*inverse navbar color settings*/
+.navbar-inverse .navbar-inner {
+    background-color: #006666;
+	background-image: none;
+	border-color: #006666;
+}
+
+/*inverse navbar hover color settings*/
+.navbar-inverse .navbar-inner a.dropdown-toggle:hover {
+    background-color: #0A7B7B;
+	background-image: none;
+	border-color: #0A7B7B;
+}
+
+/*define top navbar width*/
+.navbar-inner .container-fluid {
+	max-width: 100%;
+	padding-left: 10px;
+}
+
+/* Removes any remaining text shadow in the navbar */
+.navbar .nav li a {
+    text-shadow: none;
+}
+
+/*
+*Navbar and Custom Menu font colors 
+-----------------------------------*/
+
+.navbar .brand, .navbar .nav>li>a {
+	color: #333;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.25)
+}
+.navbar .brand:hover, .navbar .nav>li>a:hover, .navbar .brand:focus, .navbar .nav>li>a:focus {
+	color: #999
+}
+
+/*Home icon colours*/
+
+.navbar .small-logo-container.default-icon {
+	color: #333;
+}
+
+.navbar .small-logo-container.default-icon:hover {
+	color: #999;
+}
+
+/*Custom Menu caret colours */
+
+.navbar .nav li.dropdown>.dropdown-toggle .caret {
+	border-top-color: #333;
+	border-bottom-color: #333;
+}
+
+.navbar .nav li.dropdown>a:hover .caret, .navbar-inverse .nav li.dropdown>a:focus .caret {
+	border-top-color: #999;
+	border-bottom-color: #999;
+}
+
+/*User Menu font colours */
+
+.navbar .usermenu .moodle-actionmenu .userbutton .usertext {
+	color: #333
+}
+
+.navbar .usermenu .moodle-actionmenu:hover .usertext {
+	color: #999
+}
+/*Hover colour for User menu - changes automatically when invert navbar is selected*/
+
+.usermenu .moodle-actionmenu:hover {
+	background-color: #0A7B7B;
+	background-image: none;
+}
+
+/*User Menu caret colours */
+
+.navbar .usermenu .moodle-actionmenu[data-enhanced] .toggle-display.textmenu .caret {
+	border-top-color: #333;
+}
+
+.navbar .usermenu .moodle-actionmenu[data-enhanced] .toggle-display.textmenu .caret:hover {
+	border-top-color: #999;
+}
+
+/*
+*Navbar-inverse and Custom Menu font colors
+-----------------------------*/
+.navbar-inverse .brand, .navbar-inverse .nav>li>a {
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.25)
+}
+.navbar-inverse .brand:hover, .navbar-inverse .nav>li>a:hover, .navbar-inverse .brand:focus, .navbar-inverse .nav>li>a:focus {
+	color: #ccc;
+}
+
+/*Home icon inverse colours*/
+
+.navbar-inverse .small-logo-container.default-icon {
+	color: #fff;
+}
+
+.navbar-inverse .small-logo-container.default-icon:hover {
+	color: #ccc;
+}
+
+/*Custom Menu caret inverse colours */
+
+.navbar-inverse .nav li.dropdown>.dropdown-toggle .caret {
+	border-top-color: #fff;
+	border-bottom-color: #fff;
+}
+
+.navbar-inverse .nav li.dropdown>a:hover .caret, .navbar-inverse .nav li.dropdown>a:focus .caret {
+	border-top-color: #ccc;
+	border-bottom-color: #ccc;
+}
+
+/*User Menu font inverse colours */
+.navbar-inverse .usermenu .moodle-actionmenu .userbutton .usertext {
+	color: #fff;
+}
+
+.navbar-inverse .usermenu .moodle-actionmenu:hover .usertext {
+	color: #ccc;
+}
+
+/*User Menu caret inverse colours */
+
+.navbar-inverse .usermenu .moodle-actionmenu[data-enhanced] .toggle-display.textmenu .caret {
+	border-top-color: #fff;
+}
+
+.navbar-inverse .usermenu .moodle-actionmenu[data-enhanced] .toggle-display.textmenu .caret:hover {
+	border-top-color: #ccc;
+}
+
+/*###################################################
+####### CUSTOM MENU DROPDOWN SCROLL SETTINGS  ##########
+###################################################*/
+
+.menu-scroll {
+   max-height: 50vh;/* you can change as you need it */
+   overflow-x: hidden; /* Hide horizontal scrollbar */
+   overflow-y: auto; /* Add vertical scrollbar */
+   border-radius: 0px;
+}
+
+.dropdown-menu  {
+   border-radius: 0px;
+}
+
+/*################################################################
+############  BRANDING - LOGO AND HEADER CSS SETTINGS  ###########
+#################################################################*/
+
+/*Standard Clean custom CSS settings
+------------------------------------*/
+
+div.logo {
+    background: url([[setting:logo]]) 0 0 no-repeat;
+    display: block;
+    float: left;
+    height: 75px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+img.small-logo {
+    float: left;
+    height: 30px;
+    padding: 5px 10px 5px 10px;
+}
+
+.navbar-inner img.small-logo:hover {
+    background-color: #006666;
+}
+
+.navbar-inverse img.small-logo:hover {
+    background-color: #0A7B7B;
+}
+
+@media (max-width: 767px) {
+    img.small-logo {
+        margin: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar img.small-logo {
+        max-width: 150px;
+    }
+    
+	/* Applying accesshide styles */
+    .navbar .small-logo-container + .brand {
+        position: absolute;
+        left: -10000px;
+        font-size: 1em;
+        font-weight: normal;
+    }
+}
+
+/*CUSTOM SMALL LOGO SETTINGS
+----------------------------*/
+
+/*define default logo/icon size and vertical position*/
+
+.default-logo {
+	float: left;
+    margin: 10px 10px 0px 0px;
+    height: 16px;
+}
+
+.default-icon {
+	float: left;
+	/*padding: 8px 10px 5px 10px;*/
+    /*margin: 8px 0px 0px 0px;*/
+}
+
+a.default-icon {
+	padding: 8px 8px 12px 12px;
+	text-decoration:none;
+}
+
+a.default-icon:hover {
+background-color: #0A7B7B;
+}
+
+.default-icon i {
+	font-size:x-large;
+}
+
+/* USER PROFILE PIC SETTINGS
+----------------------------*/
+
+/* Stop user profile pic appearing over Logo */
+.page-context-header .userpicture.defaultuserpic {
+    display: none;
+}
+
+/* Stop user profile pic appearing over Logo in dashboard */
+.page-context-header img.userpicture {
+    display: none;
+}
+
+/*PAGE HEADER AND LOGO SETTINGS
+-------------------------------*/
+
+/*define LOGO size without context header*/
+div.logo {
+	/*background-color: #fff;*/
+        background-size: auto 55px;
+        background position: bottom;
+        padding: 0px;
+        height: 55px;
+        /*width: 96vw;*/
+        margin: 5px 23px 25px 23px;
+}
+
+/*define page-header width and height*/
+ #page-header {	
+	width: 99vw;
+    margin-left: calc(-1 * ((99vw - 100%) / 2)); /* align left edge to the left edge of the viewport */
+	height: 65px; /* Adjust the height of the branding banner */
+}
+
+/*define page-header background image (FRACTAL) and display only on desktop PC*/
+@media only screen and (min-width: 1050px) { #page-header {	
+	background-image: url([[pix:theme|LogoBackgroundFractalS]]); /*Background image in Pix directory */
+	background-position: right bottom; /*Fractal position  */
+	background-repeat: no-repeat; /* Display fractal once only */
+	background-attachment: scroll;
+	background-size: auto;
+}
+}
+
+/*define page-header background color*/
+ #page-header {	
+	background-color: #fff;
+}
+
+/*define page-header border style, width and color*/
+ .page-context-header {	
+	border-bottom-style: solid; /* Border under the logo and fractal  */
+	border-bottom-width: 15px;  /* Border width  */
+	border-bottom-color: #006666; /* Border color  */
+	margin-bottom: 5px; /* Adjust the distance between the breadcrumb and branding border */
+}
+
+
+/*Set course title size and position - insert Unitec logo - size and position depending on media query */
+
+/*  Unitec Moodle logo size and position for larger screens  */
+ @media only screen and (min-width: 1050px) { div.page-context-header {
+	/*background-image: url([[pix:theme|MoodleUnitecLogo]]); /*Background image in Pix directory */
+	background-image: url([[pix:theme|MoodleUnitecLogo]]); /*Background image from settings */
+    background-size: 200px 55px;	
+    background-position: 10px 6px;  /* Moodle Online Learning logo - distance from left edge x distance from top of page */
+	background-repeat: no-repeat;  /* hyperlink to:  https://moodle.unitec.ac.nz/ */
+	padding: 0px 0px 10px 0px;
+	height: 55px;
+	position: relative;
+	} 
+
+/*COURSE HEADING AND TITLE SETTINGS
+-----------------------------------*/
+
+/*Context header color settings*/
+.page-context-header .page-header-headings h1 {
+    color: #006666;
+}
+	 
+/*Vertical and horizontal adjustment*/
+.page-context-header .page-header-headings {
+	margin: 10px 0px 0px 20px; /* This setting  vertically adjusts where both the course text sits in relation to the Logo*/
+	padding: 0px 0px 0px 200px; /*this adjusts where the course title sits in relation to the left side of the screen and Logo */
+	bottom: -15px;
+ 	position: absolute;
+        
+}
+}
+
+/* Sets the size for the course heading */
+.page-header-headings h1 {
+    font-size:x-large;
+}
+
+/*  Unitec size and position for smaller screens  */
+ @media only screen and (max-width: 1049px) { div.page-context-header {
+	background-image: url([[pix:theme|MoodleUnitecLogo]]);
+    background-size: calc(200px/1.6) 35px;	
+    background-position: 20px top;  /* Moodle Online Learning logo - distance from left edge x distance from top of page */
+	background-repeat: no-repeat;
+	
+} 
+	 /*Context header color settings*/
+.page-context-header .page-header-headings h1 {
+    color: #006666;
+}
+	 
+/*Vertical and horizontal adjustment*/
+.page-context-header .page-header-headings {
+	padding: 5px 0px 0px 15px; /*this adjusts where the course title sits in relation to the left side of the screen and Logo */
+        
+}
+
+ }
+
+/*###################################################
+########      BREADCRUMB CSS SETTINGS      ###########
+###################################################*/
+
+/*Breadcrumb background width and position*/
+
+#page-navbar .breadcrumb-button {
+	height: 30px;
+}
+
+.clearfix #page-navbar {
+	clear: left;
+	background-color: #0A7B7B;
+	width: 99%;
+	margin: 0 auto;
+	height: 40px;
+	margin: 0px auto; /* Set the breadcrumb vertical position */
+	padding: 5px 5px 0px 5px;
+}
+
+/*define general breadcrumb properties*/
+.breadcrumb {
+	background-color: #006666;
+	border-radius: 0px;
+	color: #fff;
+	text-shadow: none;
+	text-decoration: none;
+}
+
+.breadcrumb li a {
+	color: #fff;
+	text-shadow: none;
+	text-decoration: none;
+}
+
+.breadcrumb li {
+	color: #fff;
+	text-shadow: none;
+	text-decoration: none;
+}
+
+.breadcrumb li span {
+	color: #fff;
+	text-shadow: none;
+	text-decoration: none;
+}
+
+ul.breadcrumb li span a span {
+	color: #fff;
+	text-shadow: none;
+	text-decoration: none;
+	padding: 8px 2px 8px 2px;
+}
+
+ul.breadcrumb li span a span:hover {
+	color: #ccc;
+	background-color: [[setting:breadcrumbhover]];
+}
+
+/*##################################################
+#########  SITE BACKGROUND AREA SETTINGS    ##########
+##################################################*/
+
+body {
+	padding:0px 10px 10px 10px;
+	background-image: url(); /*Background image in settings */
+	background-position: left top; /*site background position  */
+	background-repeat: repeat; /* Image repeat */
+    background-attachment: scroll;
+    background-size: auto;
+    background-color: #fff;
+    border: 2px solid #fff;
+}
+
+/*###################################################
+########      PAGE AREA CSS SETTINGS    ###########
+###################################################*/
+
+/*adjust page to display correctly with title bar*/
+
+div#page-content.row-fluid {
+clear: left;
+margin: 5px;
+}
+
+@media only screen and (min-width: 1050px) { body {
+	padding-top: 40px;
+}
+}
+
+/* Allows Moodle content to expand to full width on wide screens */
+.container-fluid {
+max-width: 100%;
+}
+
+/* Removes padding and margins from the following course page elements */
+.box.coursebox {
+   margin: 3px 0px 3px 0px;
+   padding: 0px 0px 0px 0px;
+}
+
+div#region-main-box, aside#block-region-side-post  {
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+}
+
+
+#page-content {
+    padding: 10px 10px 10px 10px;
+	width: 98%;
+    float: left;
+	background-image: url(); /*Background image in settings */
+	background-position: left top; /*Page background position  */
+	background-repeat: repeat; /* Image repeat */
+    background-attachment: scroll;
+    background-size: auto;
+    background-color: #fff;
+    border: 2px solid #fff;
+}
+
+/*###################################################
+########     BLOCK CONTENT CSS SETTINGS    ###########
+###################################################*/
+
+.block{
+	background-color: #fff;
+	background-image: url(); /*Background image in settings */
+	background-position: left top; /*coursecontent background position  */
+	background-repeat: repeat; /* Image repeat */
+    background-attachment: scroll;
+    background-size: auto;
+	margin: 3px 5px 5px 5px;
+    padding: 0px 3px 0px 3px;
+    border-radius: 0px;
+    border: 2px solid #fff;
+}
+
+.block .header h2, .block .header .block-action h2 {
+    text-shadow: none;
+	color: #999 !important;
+	font-weight: bold !important;
+	font-size: 1.1em !important;
+}
+
+.block a {
+	color: #333;
+}
+
+.block a:hover {
+	color: #999;
+}
+
+.block span {
+	color: #333;
+}
+
+.block span:hover {
+	color: #999;
+}
+
+.block p:hover {
+	color: #999;
+}
+
+/* Removes padding and margins from the following course page elements */
+.block .content {
+   margin: 3px 0px 3px 0px;
+   padding: 0px 0px 0px 0px;
+}
+
+/*##################################################
+#########  COURSE CONTENT AREA SETTINGS    ##########
+##################################################*/
+
+#region-main {
+	padding: 8px 8px 8px 8px;
+	margin: 3px 5px 5px 5px;
+    background-image: url(); /*Background image in settings */
+	background-position: left top; /*coursecontent background position  */
+	background-repeat: repeat; /* Image repeat */
+    background-attachment: scroll;
+    background-size: auto;
+    background-color: #fff;
+    border: 2px solid #fff;
+}
+
+#region-main h1 a, #region-main h2 a, #region-main h3 a, #region-main h4 a, #region-main h5 a, #region-main p a, #region-main span a {
+	color: #333;
+}
+
+#region-main h1 a:hover, #region-main h2 a:hover, #region-main h3 a:hover, #region-main h4 a:hover, #region-main h5 a:hover, #region-main p a:hover, #region-main span a:hover {
+	color: #666;
+}
+
+/*Font setting for course pages*/
+ h3.sectionname span, h3.sectionname span span a, h3.sectionname span a {
+    color: #006666 !important;
+	font-family: inherit !important;
+	font-size: 24px !important;
+	font-style: normal !important;
+	font-weight: 700 !important;
+}
+
+#region-main h1 {
+	color: #333;
+	font-family: inherit;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 700;
+}
+
+#region-main h2 {
+	color: #333;
+	font-family: inherit;
+	font-size: 28px;
+	font-style: normal;
+	font-weight: 700;
+}
+
+#region-main h3 {
+	color: #333;
+	font-family: inherit;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 700;
+}
+
+#region-main h4 {
+	color: #333;
+	font-family: inherit;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
+}
+
+#region-main h5 {
+	color: #333;
+	font-family: inherit;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+}
+
+#region-main p, .form-label .form-shortname, .form-defaultinfo{
+	color: #000;
+}
+
+#region-main p {
+	color: #000;
+	font-family: inherit;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+}
+
+#region-main span{
+	color: #000;
+	font-family: inherit;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+}
+
+/*##################################################
+#########  PAGE FOOTER AREA SETTINGS    ##########
+##################################################*/
+
+#page-footer {
+    
+	background-color: #006666;
+	border-color: #006666;
+	text-shadow: none;
+	margin: 5px auto 0px auto;
+    width: 100%;
+}
+
+body #page-footer, #page-footer p, #page-footer span {
+	color: #fff !important;
+}
+
+#page-footer a {
+	color: #fff !important;
+}
+
+#page-footer a:hover {
+	color: #999 !important;
+}
+
+/*##################################################
+########## CUSTOM BUTTONS CSS SETTINGS ############
+#################################################*/
+
+.custombutton1 {
+    background-color: #066; 
+    color: #fff;
+    padding: 8px 12px 8px 12px;
+	margin: 0px 2px 8px 2px;  
+    border-radius: 0px; 
+    text-align: center;
+	vertical-align: middle;
+    float: left; 
+    display: table;
+}
+
+.custombutton1:hover {
+    background-color: #0A7B7B;
+	color: #999;
+}
+
+.custombutton2 {
+    background-color: darkred; 
+    color: #fff;
+    padding: 8px 12px 8px 12px;
+	margin: 0px 2px 8px 2px;
+    border-radius: 0px; 
+    text-align: center; 
+    float: left; 
+    display: table;
+}
+
+.custombutton2:hover {
+    background-color: red;
+	color: #999;
+}
+
+.custombutton3 {
+    background-color: orangered; 
+    color: #fff;
+    padding: 8px 12px 8px 12px;
+	margin: 0px 2px 8px 2px;  
+    border-radius: 0px; 
+    text-align: center; 
+    float: left; 
+    display: table;
+}
+
+.custombutton3:hover {
+    background-color: darkorange;
+	color: #999;
+}
+
+.custombutton4 {
+    background-color: royalblue; 
+    color: #fff;
+    padding: 8px 12px 8px 12px;
+	margin: 0px 2px 8px 2px;  
+    border-radius: 0px; 
+    text-align: center; 
+    float: left; 
+    display: table;
+}
+
+.custombutton4:hover {
+    background-color: cornflowerblue;
+	color: #999;
+}
+
+.custombutton5 {
+    background-color: yellow; 
+    color: #333;
+    padding: 8px 12px 8px 12px;
+	margin: 0px 2px 8px 2px; 
+    border-radius: 0px; 
+    text-align: center; 
+    float: left; 
+    display: table;
+}
+
+.custombutton5:hover {
+    background-color: yellowgreen;
+	color: #999;
+}
+
+/*FRONT PAGE BUTTON SETTINGS
+----------------------------*/
+
+/* Buttons visible when the site is viewed on desktop computers and tablets*/
+
+.frontpagebutton1 {
+    background-color: #006666; 
+    color: #ffffff !important;
+    margin: 0px 5px 10px 5px; 
+    width: 180px; 
+    height: 100px; 
+    border-radius: 0px; 
+    text-align: center; 
+    float: left; 
+    display: table;
+}
+
+.frontpagebutton1:hover {
+    background-color: #009688;
+}
+
+.frontpagebuttoncontent1 {
+	color: #ffffff !important;
+    display: table-cell; 
+    vertical-align: middle;
+}
+
+/* Buttons visible when the site is viewed on moblie phones*/
+
+.frontpagebutton2 {
+    background-color: #006666; 
+    color: #ffffff !important;
+    margin: 0px 5px 10px 5px; 
+    padding: 15px 15px 0px 15px;
+    width: 90%; 
+    height: 45px; 
+    border-radius: 0px; 
+    text-align: center; 
+    display: table;
+}
+
+.frontpagebutton2:hover {
+    background-color: #009688;
+}
+
+.frontpagebuttoncontent2left {
+	color: #ffffff !important;
+    display: table-cell; 
+    vertical-align: middle;
+    float: left;
+}
+.frontpagebuttoncontent2right {
+	color: #ffffff !important;
+    display: table-cell; 
+    vertical-align: middle;
+    float: right;
+}
+
+/* POST-IT NOTE CSS   - allows the creation of post-it
+notes with pin via pure css */
+.postit-container {
+	float: left; 
+	width: 30%; 
+	max-width 300px; 
+	min-width: 150px;
+	margin: 0px 10px 0px 10px;
+}
+
+.postit-quote-container {
+  margin: 30px 0px 20px 0px;
+  position: relative;
+  width: 100%;
+}
+ 
+.postit-note {
+  color: #333;
+  position: relative;
+  width: 80%;
+  max-width: 300px;
+  min-width: 150px;
+  margin: 0 auto;
+  padding: 8%;
+  font-family: Architects Daughter;
+  font-size: larger;
+  line-height: 1;
+  box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
+}
+
+.postit-note .postit-author {
+  display: block;
+  margin: 30px 0 0 0;
+  text-align: right;
+  font-family: Satisfy;
+  font-size: larger;
+}
+
+.postit-yellow {
+  background: #eae672;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(2deg);
+}
+
+.postit-blue {
+  background: #66ccff;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(2deg);
+}
+
+.postit-pink {
+  background: #ff99cc;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(2deg);
+}
+
+.postit-green {
+  background: #66ff99;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(2deg);
+}
+
+.postit-white {
+  background: #e6e6e6;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(2deg);
+}
+
+.postit-pin {
+  background-color: #aaa;
+  display: block;
+  height: 32px;
+  width: 2px;
+  position: absolute;
+  left: 50%;
+  top: -16px;
+  z-index: 1;
+}
+
+.postit-pin:after {
+  background-color: #A31;
+  background-image: radial-gradient(25% 25%, circle, hsla(0,0%,100%,.3), hsla(0,0%,0%,.3));
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.1),
+              inset 3px 3px 3px hsla(0,0%,100%,.2),
+              inset -3px -3px 3px hsla(0,0%,0%,.2),
+              23px 20px 3px hsla(0,0%,0%,.15);
+  content: '';
+  height: 12px;
+  left: -5px;
+  position: absolute;
+  top: -10px;
+  width: 12px;
+}
+
+.postit-pin:before {
+  background-color: hsla(0,0%,0%,0.1);
+  box-shadow: 0 0 .25em hsla(0,0%,0%,.1);
+  content: '';
+
+  height: 24px;
+  width: 2px;
+  left: 0;
+  position: absolute;
+  top: 8px;
+ 
+  transform: rotate(57.5deg);
+  -moz-transform: rotate(57.5deg);
+  -webkit-transform: rotate(57.5deg);
+  -o-transform: rotate(57.5deg);
+  -ms-transform: rotate(57.5deg);
+
+  transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  -o-transform-origin: 50% 100%;
+}
