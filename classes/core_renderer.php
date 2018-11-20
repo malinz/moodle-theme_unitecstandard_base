@@ -25,6 +25,40 @@ require_once($CFG->dirroot . '/theme/bootstrapbase/renderers.php');
  */
 class theme_unitecstandard_base_core_renderer extends theme_bootstrapbase_core_renderer {
 
+		/**
+     * Generates the HTML for the hide blocks button.
+     *
+     * Malcolm Hay 20/11/2018
+     * @return string HTML.
+     */
+   public function hide_blocks_button() {
+	   
+        //return $this->page->button;
+		return html_writer::start_tag('input', array('id' => 'hideShowButton', 'type' => 'button', 'value' => 'Hide Blocks', 'class' => 'hideBlocks-button', 'onclick' => 'hideBlocks()'));
+	  
+    }
+	
+	
+	/**
+     * Wrapper for header elements.
+     * Extracted from moodle/lib.outputrenderers.php to add extra button to Breadcrumb Nav - Malcolm Hay
+     * @return string HTML to display the main header.
+     */
+    public function full_header() {
+		
+        $html = html_writer::start_tag('header', array('id' => 'page-header', 'class' => 'clearfix'));
+        $html .= $this->context_header();
+        $html .= html_writer::start_div('clearfix', array('id' => 'page-navbar'));
+        $html .= html_writer::tag('div', $this->navbar(), array('class' => 'breadcrumb-nav'));
+		$html .= html_writer::div($this->page_heading_button(), 'breadcrumb-button');
+		//Extra button added here
+        $html .= html_writer::div($this->hide_blocks_button(), 'hideBlocks-button');
+        $html .= html_writer::end_div();
+        $html .= html_writer::tag('div', $this->course_header(), array('id' => 'course-header'));
+        $html .= html_writer::end_tag('header');
+        return $html;
+    }
+
     /**
      * Either returns the parent version of the header bar, or a version with the logo replacing the header.
      *
