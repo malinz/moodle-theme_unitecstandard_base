@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The secure layout.
+ * The two column layout.
  *
  * @package   theme_unitecstandard
  * @copyright 2013 Moodle, moodle.org
@@ -25,12 +25,11 @@
 // Get the HTML for the settings bits.
 $html = theme_unitecstandard_get_html_for_settings($OUTPUT, $PAGE);
 
-// Set default (LTR) layout mark-up for a three column page.
+// Set default (LTR) layout mark-up for a two column page with blocks on the right.
 $topfullwidth = 'span12';
 $regionmainbox = 'span9';
 $upperfullwidth = 'span12';
-$regionmain = 'span8 pull-right';
-$sidepre = 'span4 desktop-first-column';
+$regionmain = 'span12';
 $sidepost = 'span3 pull-right';
 $lowerfullwidth = 'span12';
 $bottomfullwidth = 'span12';
@@ -40,8 +39,7 @@ if (right_to_left()) {
     $topfullwidth = 'span12';
 	$regionmainbox = 'span9 pull-right';
     $upperfullwidth = 'span12';
-    $regionmain = 'span8';
-    $sidepre = 'span4 pull-right';
+    $regionmain = 'span12';
     $sidepost = 'span3 desktop-first-column';
 	$lowerfullwidth = 'span12';
 	$bottomfullwidth = 'span12';
@@ -52,6 +50,7 @@ $hastopfullwidth = $PAGE->blocks->region_has_content('top-fullwidth', $OUTPUT);
 $hasbottomfullwidth = $PAGE->blocks->region_has_content('bottom-fullwidth', $OUTPUT);
 $hasupperfullwidth = $PAGE->blocks->region_has_content('upper-fullwidth', $OUTPUT);
 $haslowerfullwidth = $PAGE->blocks->region_has_content('lower-fullwidth', $OUTPUT);
+
 
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
@@ -67,15 +66,17 @@ echo $OUTPUT->doctype() ?>
 
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
-<header role="banner" class="navbar navbar-fixed-top moodle-has-zindex">
+<header role="banner" class="navbar navbar-fixed-top<?php echo $html->navbarclass ?> moodle-has-zindex">
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
-            <?php echo $OUTPUT->navbar_home(false); ?>
+            <?php echo $OUTPUT->navbar_home(); ?>
             <?php echo $OUTPUT->navbar_button(); ?>
+            <?php echo $OUTPUT->user_menu(); ?>
+            <?php echo $OUTPUT->search_box(); ?>
             <div class="nav-collapse collapse">
+                <?php echo $OUTPUT->custom_menu(); ?>
                 <ul class="nav pull-right">
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
-                    <li class="navbar-text"><?php echo $OUTPUT->login_info(false) ?></li>
                 </ul>
             </div>
         </div>
@@ -83,13 +84,9 @@ echo $OUTPUT->doctype() ?>
 </header>
 
 <div id="page" class="container-fluid">
-
-    <header id="page-header" class="clearfix">
-        <?php echo $html->heading; ?>
-    </header>
-
+    <?php echo $OUTPUT->full_header(); ?>
     <div id="page-content" class="row-fluid">
-       <?php
+        <?php
 		if ($hastopfullwidth)  {
 			echo $OUTPUT->blocks('top-fullwidth', $topfullwidth);
 		}
@@ -97,19 +94,26 @@ echo $OUTPUT->doctype() ?>
         <div id="region-main-box" class="<?php echo $regionmainbox; ?>">
             <div class="row-fluid">
                 <section id="region-main" class="<?php echo $regionmain; ?>">
+                  <div class="row-fluid">
                    <?php
 					if ($hasupperfullwidth)  {
 						echo $OUTPUT->blocks('upper-fullwidth', $upperfullwidth); 
 					}
 					?>
-                    <?php echo $OUTPUT->main_content(); ?>
+					</div>
+                    <?php
+                    echo $OUTPUT->course_content_header();
+                    echo $OUTPUT->main_content();
+                    echo $OUTPUT->course_content_footer();
+                    ?>
+                    <div class="row-fluid">
                     <?php
                     if ($haslowerfullwidth)  {
 						echo $OUTPUT->blocks('lower-fullwidth', $lowerfullwidth); 
 					}
 					?>
+					</div>
                 </section>
-                <?php echo $OUTPUT->blocks('side-pre', $sidepre); ?>
             </div>
         </div>
         <?php echo $OUTPUT->blocks('side-post', $sidepost); ?>
@@ -121,6 +125,18 @@ echo $OUTPUT->doctype() ?>
 	}
 	?>
 	</div>
-</div>
+   </div>
+    <footer id="page-footer">
+        <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
+        <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
+        <?php
+        echo $html->footnote;
+        echo $OUTPUT->login_info();
+        echo $OUTPUT->home_link();
+        echo $OUTPUT->standard_footer_html();
+        ?>
+    </footer>
+
+    <?php echo $OUTPUT->standard_end_of_body_html() ?>
 </body>
 </html>

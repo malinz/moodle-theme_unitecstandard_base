@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Unitec Standard Base theme, an example of how to make a Bootstrap theme
+ * Three column layout
  *
  * DO NOT MODIFY THIS THEME!
  * COPY IT FIRST, THEN RENAME THE COPY AND MODIFY IT INSTEAD.
@@ -23,23 +23,48 @@
  * For full information about creating Moodle themes, see:
  * http://docs.moodle.org/dev/Themes_2.0
  *
- * @package   theme_unitecstandard_base
+ * @package   theme_unitecstandard
  * @copyright 2013 Moodle, moodle.org
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 // Get the HTML for the settings bits.
-$html = theme_unitecstandard_base_get_html_for_settings($OUTPUT, $PAGE);
+$html = theme_unitecstandard_get_html_for_settings($OUTPUT, $PAGE);
 
-$regionmainbox = 'span9 desktop-first-column';
+// Set default (LTR) layout mark-up for a three column page.
+$topfullwidth = 'span12';
+$regionmainbox = 'span9';
+$upperfullwidth = 'span12';
 $regionmain = 'span8 pull-right';
 $sidepre = 'span4 desktop-first-column';
 $sidepost = 'span3 pull-right';
+$lowerfullwidth = 'span12';
+$bottomfullwidth = 'span12';
+
+// Reset layout mark-up for RTL languages.
+if (right_to_left()) {
+    $topfullwidth = 'span12';
+	$regionmainbox = 'span9 pull-right';
+    $upperfullwidth = 'span12';
+    $regionmain = 'span8';
+    $sidepre = 'span4 pull-right';
+    $sidepost = 'span3 desktop-first-column';
+	$lowerfullwidth = 'span12';
+	$bottomfullwidth = 'span12';
+}
+
+//Checks to see if there is content to display
+$hastopfullwidth = $PAGE->blocks->region_has_content('top-fullwidth', $OUTPUT);
+$hasbottomfullwidth = $PAGE->blocks->region_has_content('bottom-fullwidth', $OUTPUT);
+$hasupperfullwidth = $PAGE->blocks->region_has_content('upper-fullwidth', $OUTPUT);
+$haslowerfullwidth = $PAGE->blocks->region_has_content('lower-fullwidth', $OUTPUT);
+
 
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
 <head>
     <title><?php echo $OUTPUT->page_title(); ?></title>
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Audiowide|Bungee+Shade|Cinzel|Indie+Flower|Josefin+Sans:400i|Open+Sans|Orbitron|Permanent+Marker|Roboto+Slab|Taviraj|Trirong|Satisfy|Architects+Daughter|Dancing+Script" rel="stylesheet">
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
     <?php echo $OUTPUT->standard_head_html() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,7 +80,6 @@ echo $OUTPUT->doctype() ?>
             <?php echo $OUTPUT->navbar_home(); ?>
             <?php echo $OUTPUT->navbar_button(); ?>
             <?php echo $OUTPUT->user_menu(); ?>
-            <?php echo $OUTPUT->navbar_plugin_output(); ?>
             <?php echo $OUTPUT->search_box(); ?>
             <div class="nav-collapse collapse">
                 <?php echo $OUTPUT->custom_menu(); ?>
@@ -70,23 +94,48 @@ echo $OUTPUT->doctype() ?>
 <div id="page" class="container-fluid">
     <?php echo $OUTPUT->full_header(); ?>
     <div id="page-content" class="row-fluid">
+        <?php
+		if ($hastopfullwidth)  {
+			echo $OUTPUT->blocks('top-fullwidth', $topfullwidth);
+		}
+		?>
         <div id="region-main-box" class="<?php echo $regionmainbox; ?>">
             <div class="row-fluid">
                 <section id="region-main" class="<?php echo $regionmain; ?>">
+                  <div class="row-fluid">
+                   <?php
+					if ($hasupperfullwidth)  {
+						echo $OUTPUT->blocks('upper-fullwidth', $upperfullwidth); 
+					}
+					?>
+					</div>
                     <?php
                     echo $OUTPUT->course_content_header();
                     echo $OUTPUT->main_content();
-                    echo $OUTPUT->activity_navigation();
                     echo $OUTPUT->course_content_footer();
                     ?>
+                    <div class="row-fluid">
+                    <?php
+                    if ($haslowerfullwidth)  {
+						echo $OUTPUT->blocks('lower-fullwidth', $lowerfullwidth); 
+					}
+					?>
+					</div>
                 </section>
                 <?php echo $OUTPUT->blocks('side-pre', $sidepre); ?>
             </div>
         </div>
         <?php echo $OUTPUT->blocks('side-post', $sidepost); ?>
+        <div class="row-fluid">
+     <?php
+	if ($hasbottomfullwidth)  {
+		echo $OUTPUT->blocks('bottom-fullwidth', $bottomfullwidth); 
+	}
+	?>
+	</div>
     </div>
-
-    <footer id="page-footer">
+</div>
+   <footer id="page-footer">
         <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
         <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
         <?php
@@ -96,9 +145,6 @@ echo $OUTPUT->doctype() ?>
         echo $OUTPUT->standard_footer_html();
         ?>
     </footer>
-
     <?php echo $OUTPUT->standard_end_of_body_html() ?>
-
-</div>
 </body>
 </html>

@@ -17,7 +17,7 @@
 /**
  * The embedded layout.
  *
- * @package   theme_unitecstandard_base
+ * @package   theme_unitecstandard
  * @copyright 2013 Moodle, moodle.org
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,6 +26,7 @@ echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
 <head>
     <title><?php echo $OUTPUT->page_title(); ?></title>
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Audiowide|Bungee+Shade|Cinzel|Indie+Flower|Josefin+Sans:400i|Open+Sans|Orbitron|Permanent+Marker|Roboto+Slab|Taviraj|Trirong|Satisfy|Architects+Daughter|Dancing+Script" rel="stylesheet">
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
     <?php echo $OUTPUT->standard_head_html() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
