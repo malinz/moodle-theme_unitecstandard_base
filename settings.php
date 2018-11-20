@@ -32,38 +32,6 @@ defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
 
-    // Invert Navbar to dark background.
-    $name = 'theme_unitecstandard_base/invert';
-    $title = get_string('invert', 'theme_unitecstandard_base');
-    $description = get_string('invertdesc', 'theme_unitecstandard_base');
-    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
-
-    // Logo file setting.
-    $name = 'theme_unitecstandard_base/logo';
-    $title = get_string('logo','theme_unitecstandard_base');
-    $description = get_string('logodesc', 'theme_unitecstandard_base');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
-
-    // Small logo file setting.
-    $name = 'theme_unitecstandard_base/smalllogo';
-    $title = get_string('smalllogo', 'theme_unitecstandard_base');
-    $description = get_string('smalllogodesc', 'theme_unitecstandard_base');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'smalllogo');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
-
-    // Show site name along with small logo.
-    $name = 'theme_unitecstandard_base/sitename';
-    $title = get_string('sitename', 'theme_unitecstandard_base');
-    $description = get_string('sitenamedesc', 'theme_unitecstandard_base');
-    $setting = new admin_setting_configcheckbox($name, $title, $description, 1);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
-
     // Custom CSS file.
     $name = 'theme_unitecstandard_base/customcss';
     $title = get_string('customcss', 'theme_unitecstandard_base');
