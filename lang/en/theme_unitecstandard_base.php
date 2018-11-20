@@ -45,27 +45,42 @@ Website: <a href="http://www.basbrands.nl">www.basbrands.nl</a>
 <p><a href="unitecstandard_base/README.txt">How to copy and customise this theme.</a></p>
 </div></div>';
 
+//Privacy declaration
+$string['privacy:metadata'] = 'The unitecstandard_base theme does not store any personal data about any user.';
+
+// Theme title
 $string['configtitle'] = 'unitecstandard_base';
 
-$string['customcss'] = 'Custom CSS';
-$string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
+//Plugin name
+$string['pluginname'] = 'Unitec Standard';
 
-$string['footnote'] = 'Footnote';
-$string['footnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.';
-
-$string['invert'] = 'Invert navbar';
-$string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
-
-$string['logo'] = 'Logo';
-$string['logodesc'] = 'The logo is only displayed in the header of the front page and login page.<br /> If the height of your logo is more than 75px add div.logo {height: 100px;} to the Custom CSS box below, amending accordingly if the height is other than 100px. If a logo is not added here, the logo in Appearance > Logos will be used.';
-
-$string['pluginname'] = 'unitecstandard_base';
-$string['privacy:metadata'] = 'The unitecstandard_base theme does not store any personal data about any user.';
+//Standard block regions
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
 
-$string['sitelogo'] = 'Site logo';
-$string['sitename'] = 'Display site name along with small logo';
-$string['sitenamedesc'] = 'If there is no small logo, the site name is always displayed in the navigation bar. If a small logo is set, it may be displayed with or without the site name.';
-$string['smalllogo'] = 'Small logo';
-$string['smalllogodesc'] = 'The small logo is displayed in the navigation bar. If there is a header logo for the front page and login page, the small logo is not displayed on these pages. If a logo is not added here, the compact logo in Appearance > Logos will be used.';
+/*Custom block regions
+-----------------------*/
+//Top block region
+$string['region-top-fullwidth'] = 'Top Full Width';
+//Upper course content region
+$string['region-upper-fullwidth'] = 'Upper Full Width';
+//Lower course content region
+$string['region-lower-fullwidth'] = 'Lower Full Width';
+//Bottom block region
+$string['region-bottom-fullwidth'] = 'Bottom Full Width';
+
+// Home default icon text
+$string['homeicon'] = '';
+
+// My Courses custom menu dropdown
+$string['mycourses'] = 'My Courses';
+$string['allcourses'] = 'All Courses';
+$string['noenrolments'] = 'You have no current enrolments';
+
+//Custom CSS settings description
+$string['customcss'] = 'Custom CSS';
+$string['customcssdesc'] = 'Whatever CSS rules you add to this text area will be reflected in every page, making for easier customization of this theme.';
+
+//Footnote settings description
+$string['footnote'] = 'Footnote';
+$string['footnotedesc'] = 'Whatever you add to this text area will be displayed in the footer throughout your Moodle site.';
