@@ -56,50 +56,6 @@ function theme_unitecstandard_base_process_css($css, $theme) {
 }
 
 /**
- * Adds the logo to CSS.
- *
- * @param string $css The CSS.
- * @param string $logo The URL of the logo.
- * @return string The parsed CSS
- */
-function theme_unitecstandard_base_set_logo($css, $logo) {
-    $tag = '[[setting:logo]]';
-    $replacement = $logo;
-    if (is_null($replacement)) {
-        $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
-}
-
-/**
- * Serves any files associated with the theme settings.
- *
- * @param stdClass $course
- * @param stdClass $cm
- * @param context $context
- * @param string $filearea
- * @param array $args
- * @param bool $forcedownload
- * @param array $options
- * @return bool
- */
-function theme_unitecstandard_base_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
-    if ($context->contextlevel == CONTEXT_SYSTEM and ($filearea === 'logo' || $filearea === 'smalllogo')) {
-        $theme = theme_config::load('unitecstandard_base');
-        // By default, theme files must be cache-able by both browsers and proxies.
-        if (!array_key_exists('cacheability', $options)) {
-            $options['cacheability'] = 'public';
-        }
-        return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
-    } else {
-        send_file_not_found();
-    }
-}
-
-/**
  * Adds any custom CSS to the CSS before it is cached.
  *
  * @param string $css The original CSS.
@@ -161,14 +117,6 @@ function theme_unitecstandard_base_get_html_for_settings(renderer_base $output, 
  * @deprecated since 2.5.1
  */
 function unitecstandard_base_process_css() {
-    throw new coding_exception('Please call theme_'.__FUNCTION__.' instead of '.__FUNCTION__);
-}
-
-/**
- * All theme functions should start with theme_unitecstandard_base_
- * @deprecated since 2.5.1
- */
-function unitecstandard_base_set_logo() {
     throw new coding_exception('Please call theme_'.__FUNCTION__.' instead of '.__FUNCTION__);
 }
 
