@@ -54,54 +54,24 @@ class theme_unitecstandard_base_core_renderer extends theme_bootstrapbase_core_r
     protected function should_render_logo($headinglevel = 1) {
         global $PAGE;
 
-        // Only render the logo if we're on the front page or login page
-        // and the theme has a logo.
-        $logo = $this->get_logo_url();
-        if ($headinglevel == 1 && !empty($logo)) {
-            if ($PAGE->pagelayout == 'frontpage' || $PAGE->pagelayout == 'login') {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Returns the navigation bar home reference.
+ 	/**
+     * Alternative code to always render logo regardless of the page.
      *
-     * The small logo is only rendered on pages where the logo is not displayed.
-     *
-     * @param bool $returnlink Whether to wrap the icon and the site name in links or not
-     * @return string The site name, the small logo or both depending on the theme settings.
+     * @param int $headinglevel What level the 'h' tag will be.
+     * @return bool Should the logo be rendered.
      */
-    public function navbar_home($returnlink = true) {
-        global $CFG;
-
-        $imageurl = $this->get_compact_logo_url(null, 35);
-        if ($this->should_render_logo() || empty($imageurl)) {
-            // If there is no small logo we always show the site name.
-            return $this->get_home_ref($returnlink);
+    protected function should_render_logo($headinglevel = 1) {
+        global $PAGE;
+		
+		//render logo regardless of which page as long as the logo is set
+		if ($headinglevel == 1 && !empty($this->page->theme->settings->logo)) {      
+               return true;           
         }
-        $image = html_writer::img($imageurl, get_string('sitelogo', 'theme_' . $this->page->theme->name),
-            array('class' => 'small-logo'));
-
-        if ($returnlink) {
-            $logocontainer = html_writer::link(new moodle_url('/'), $image,
-                array('class' => 'small-logo-container', 'title' => get_string('home')));
-        } else {
-            $logocontainer = html_writer::tag('span', $image, array('class' => 'small-logo-container'));
-        }
-
-        // Sitename setting defaults to true.
-        if (!isset($this->page->theme->settings->sitename) || !empty($this->page->theme->settings->sitename)) {
-            return $logocontainer . $this->get_home_ref($returnlink);
-        }
-
-        return $logocontainer;
+		return false;
     }
-
-    /**
-     * Returns a reference to the site home.
+    
+        	   /**
+     * Returns a reference to the site home. Alternative code
      *
      * It can be either a link or a span.
      *
@@ -114,54 +84,141 @@ class theme_unitecstandard_base_core_renderer extends theme_bootstrapbase_core_r
         $sitename = format_string($SITE->shortname, true, array('context' => context_course::instance(SITEID)));
 
         if ($returnlink) {
-            return html_writer::link(new moodle_url('/'), $sitename, array('class' => 'brand', 'title' => get_string('home')));
+            return html_writer::link($CFG->wwwroot, $sitename, array('class' => 'brand brandlogo', 'title' => get_string('home')));
         }
 
         return html_writer::tag('span', $sitename, array('class' => 'brand'));
     }
 
     /**
-     * Return the theme logo URL, else the site's logo URL, if any.
+     * Returns the navigation bar home reference.
      *
-     * Note that maximum sizes are not applied to the theme logo.
+     * The small logo is only rendered on pages where the logo is not displayed.
      *
-     * @param int $maxwidth The maximum width, or null when the maximum width does not matter.
-     * @param int $maxheight The maximum height, or null when the maximum height does not matter.
-     * @return moodle_url|false
+     * @param bool $returnlink Whether to wrap the icon and the site name in links or not
+     * @return string The site name, the small logo or both depending on the theme settings.
      */
-    public function get_logo_url($maxwidth = null, $maxheight = 100) {
+      public function navbar_home($returnlink = true) {
         global $CFG;
-
-        if (!empty($this->page->theme->settings->logo)) {
-            $url = $this->page->theme->setting_file_url('logo', 'logo');
-            // Get a URL suitable for moodle_url.
-            $relativebaseurl = preg_replace('|^https?://|i', '//', $CFG->wwwroot);
-            $url = str_replace($relativebaseurl, '', $url);
-            return new moodle_url($url);
+				
+		
+		// Added code for a default Home icon when no Small Logo is defined - M.H.
+		$defaulticon = '<i class="fa fa-home fa-lg">&nbsp;</i>'.get_string('homeicon', 'theme_unitecstandard');
+		
+		if ($returnlink) {
+            $defaultlogocontainer = html_writer::link($CFG->wwwroot, $defaulticon,
+                array('class' => 'small-logo-container default-icon', 'title' => get_string('home')));
+        } else {
+            $defaultlogocontainer = html_writer::tag('span', $defaulticon, array('class' => 'small-logo-container default-icon'));
         }
-        return parent::get_logo_url($maxwidth, $maxheight);
-    }
 
-    /**
-     * Return the theme's compact logo URL, else the site's compact logo URL, if any.
-     *
-     * Note that maximum sizes are not applied to the theme logo.
-     *
-     * @param int $maxwidth The maximum width, or null when the maximum width does not matter.
-     * @param int $maxheight The maximum height, or null when the maximum height does not matter.
-     * @return moodle_url|false
+        if ($this->should_render_logo() || empty($this->page->theme->settings->smalllogo)) {
+			
+            			
+			// Added code - If there is no small logo always show the default Home icon - M.H.
+			return $defaultlogocontainer;
+			
+			
+        }
+	}
+
+
+   /*
+     * This code has been extracted from bootstrapbase core_renderer.php 
+     * It renders the custom menu items for the bootstrap dropdown menu.
+	 * A condtion has been inserted to apply a class to add a scroll bar to long menus without submenus.
      */
-    public function get_compact_logo_url($maxwidth = 100, $maxheight = 100) {
-        global $CFG;
+    protected function render_custom_menu_item(custom_menu_item $menunode, $level = 0 ) {
+        static $submenucount = 0;
 
-        if (!empty($this->page->theme->settings->smalllogo)) {
-            $url = $this->page->theme->setting_file_url('smalllogo', 'smalllogo');
-            // Get a URL suitable for moodle_url.
-            $relativebaseurl = preg_replace('|^https?://|i', '//', $CFG->wwwroot);
-            $url = str_replace($relativebaseurl, '', $url);
-            return new moodle_url($url);
+        $content = '';
+        if ($menunode->has_children()) {
+
+            if ($level == 1) {
+                $class = 'dropdown';
+            } else {
+                $class = 'dropdown-submenu';
+            }
+
+            if ($menunode === $this->language) {
+                $class .= ' langmenu';
+            }
+            $content = html_writer::start_tag('li', array('class' => $class));
+            // If the child has menus render it as a sub menu.
+            $submenucount++;
+            if ($menunode->get_url() !== null) {
+                $url = $menunode->get_url();
+            } else {
+                $url = '#cm_submenu_'.$submenucount;
+            }
+            $content .= html_writer::start_tag('a', array('href'=>$url, 'class'=>'dropdown-toggle', 'data-toggle'=>'dropdown', 'title'=>$menunode->get_title()));
+            $content .= $menunode->get_text();
+            if ($level == 1) {
+                $content .= '<b class="caret"></b>';
+            }
+            $content .= '</a>';
+			/* check if the menu node has no sub-menu. Only enable scrolling if it does NOT have a sub menu. Added by Malcolm Hay*/
+            if ($menunode->get_url() === null) {
+				$content .= '<ul class="dropdown-menu ">';
+		} else {
+			$content .= '<ul class="dropdown-menu menu-scroll">';			
+		}
+            foreach ($menunode->get_children() as $menunode) {
+                $content .= $this->render_custom_menu_item($menunode, 0);
+            }
+            $content .= '</ul>';
+        } else {
+            // The node doesn't have children so produce a final menuitem.
+            // Also, if the node's text matches '####', add a class so we can treat it as a divider.
+            if (preg_match("/^#+$/", $menunode->get_text())) {
+                // This is a divider.
+                $content = '<li class="divider">&nbsp;</li>';
+            } else {
+                $content = '<li>';
+                if ($menunode->get_url() !== null) {
+                    $url = $menunode->get_url();
+                } else {
+                    $url = '#';
+                }
+                $content .= html_writer::link($url, $menunode->get_text(), array('title' => $menunode->get_title()));
+                $content .= '</li>';
+            }
         }
-        return parent::get_compact_logo_url($maxwidth, $maxheight);
+        return $content;
     }
+		
+	     /*added funtionality to display My Courses and My Dashboard to the custom menu 
+		 ------------------------------------------------------------------------------*/
+		
+		protected function render_custom_menu(custom_menu $menu) {
+    	/*
+    	* This code adds the current enrolled
+    	* courses to the custommenu.
+    	*/
+    
+    	
+        if (isloggedin() && !isguestuser()) {
+			$branchlabel = '<i class="fa fa-briefcase">&nbsp;</i>'.get_string('mycourses', 'theme_unitecstandard');
+            $branchurl   = new moodle_url('/my/index.php');
+            $branchtitle = get_string('mycourses', 'theme_unitecstandard');
+            $branchsort  = 10000;
+ 
+            $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
+ 			if ($courses = enrol_get_my_courses(NULL, 'fullname ASC')) {
+ 				foreach ($courses as $course) {
+ 					if ($course->visible){
+ 						$branch->add(format_string($course->fullname), new moodle_url('/course/view.php?id='.$course->id), format_string($course->shortname));
+ 					}
+ 				}
+ 			} else {
+                $noenrolments = get_string('noenrolments', 'theme_unitecstandard');
+ 				$branch->add('<em>'.$noenrolments.'</em>', new moodle_url('/'), $noenrolments);
+ 			}
+            
+        }
 
+
+        return parent::render_custom_menu($menu);
+	}
+	
 }
